@@ -43,4 +43,13 @@ class StateTest < Minitest::Test
     assert state.y != new_state.y
     assert state.angle != new_state.angle
   end
+
+  def test_duplicate_status_is_equal
+    state = ::Robot::State.new
+    state.x = 12
+    state.y = 23
+    state.angle = Math::PI
+    new_state = state.dup
+    assert state == new_state
+  end
 end

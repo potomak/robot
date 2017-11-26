@@ -23,5 +23,9 @@ module Robot
     def initialize_copy(other)
       @pos = OpenStruct.new(x: other.x, y: other.y)
     end
+
+    def ==(other)
+      x == other.x && y == other.y && angle == other.angle
+    end
   end
 end
