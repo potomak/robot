@@ -63,7 +63,7 @@ class CommandsTest < Minitest::Test
     state.x = 0
     state.y = 0
     state.angle = Math::PI
-    new_state = ::Robot::Commands.place(state, x: 12, y: 23, f: 'E')
+    new_state = ::Robot::Commands.place(state, x: 12, y: 23, f: 'EAST')
     refute_equal state, new_state
     assert_equal 12, new_state.x
     assert_equal 23, new_state.y
@@ -72,7 +72,7 @@ class CommandsTest < Minitest::Test
 
   def test_place_not_initialized
     state = ::Robot::State.new
-    new_state = ::Robot::Commands.place(state, x: 12, y: 23, f: 'E')
+    new_state = ::Robot::Commands.place(state, x: 12, y: 23, f: 'EAST')
     refute_equal state, new_state
     assert new_state.initialized?
     assert_equal 12, new_state.x
@@ -98,6 +98,6 @@ class CommandsTest < Minitest::Test
 
   def test_that_south_is_a_direction
     angle = 3 * Math::PI / 2
-    assert_equal 'S', ::Robot::Commands.direction(angle)
+    assert_equal 'SOUTH', ::Robot::Commands.direction(angle)
   end
 end

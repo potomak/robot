@@ -16,13 +16,13 @@ class RobotTest < Minitest::Test
       ::Robot::Commands.method(:report)
     ]
     args_list = [
-      {x: 0, y: 0, f: 'N'}
+      {x: 0, y: 0, f: 'NORTH'}
     ]
     new_state = ::Robot.execute(state, instructions, args_list)
     refute_equal state, new_state
     assert_equal 1, new_state.x
     assert_equal 2, new_state.y
-    assert_equal 'E', Robot::Commands.direction(new_state.angle)
+    assert_equal 'EAST', Robot::Commands.direction(new_state.angle)
   end
 
   def test_execute_missing_place
@@ -44,7 +44,7 @@ class RobotTest < Minitest::Test
       ::Robot::Commands.method(:report)
     ]
     expected_args_list = [
-      {x: 12, y: 23, f: 'N'},
+      {x: 12, y: 23, f: 'NORTH'},
       nil,
       nil,
       nil,

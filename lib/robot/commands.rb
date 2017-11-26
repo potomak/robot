@@ -1,10 +1,10 @@
 module Robot
   module Commands
     ANGLES = {
-      'E' => 0,
-      'N' => Math::PI / 2,
-      'W' => Math::PI,
-      'S' => 3 * Math::PI / 2
+      'EAST' => 0,
+      'NORTH' => Math::PI / 2,
+      'WEST' => Math::PI,
+      'SOUTH' => 3 * Math::PI / 2
     }
 
     def move(state, args={})
@@ -42,16 +42,16 @@ module Robot
         puts "uninizialized"
         return state
       end
-      puts "x: #{state.x}, y: #{state.y}, f: #{direction(state.angle)}"
+      puts "#{state.x},#{state.y},#{direction(state.angle)}"
       state
     end
 
     def direction(angle)
       case angle / (Math::PI / 2) % 4
-      when 0; return 'E'
-      when 1; return 'N'
-      when 2; return 'W'
-      when 3; return 'S'
+      when 0; return 'EAST'
+      when 1; return 'NORTH'
+      when 2; return 'WEST'
+      when 3; return 'SOUTH'
       end
     end
 

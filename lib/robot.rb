@@ -18,9 +18,10 @@ module Robot
 
   def parse(string)
     string.split("\n").map(&:strip).map do |command_string|
-      case command_string
-      when /^PLACE/
-        x, y, f = command_string.split(" ").map(&:strip)[1..-1]
+      instruction, *args = command_string.split(" ").map(&:strip)
+      case instruction
+      when 'PLACE'
+        x, y, f = args.join(" ").split(",").map(&:strip)
         raise 'Missing arguments' if !x || !y || !f
         [Commands.method(:place), {x: x.to_i, y: y.to_i, f: f}]
       when 'LEFT'
