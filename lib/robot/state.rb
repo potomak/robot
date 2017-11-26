@@ -19,5 +19,9 @@ module Robot
     def valid?
       x > -1 && x < 6 && y > -1 && y < 6
     end
+
+    def initialize_copy(other)
+      @pos = OpenStruct.new(x: other.x, y: other.y)
+    end
   end
 end

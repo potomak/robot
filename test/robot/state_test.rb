@@ -29,4 +29,18 @@ class StateTest < Minitest::Test
     state.angle = Math::PI
     assert state.valid?
   end
+
+  def test_dup
+    state = ::Robot::State.new
+    state.x = 12
+    state.y = 23
+    state.angle = Math::PI
+    new_state = state.dup
+    new_state.x = 34
+    new_state.y = 45
+    new_state.angle = Math::PI * 2
+    assert state.x != new_state.x
+    assert state.y != new_state.y
+    assert state.angle != new_state.angle
+  end
 end
