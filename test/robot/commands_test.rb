@@ -95,4 +95,9 @@ class CommandsTest < Minitest::Test
     assert_equal state, new_state
     assert !new_state.initialized?
   end
+
+  def test_that_south_is_a_direction
+    angle = 3 * Math::PI / 2
+    assert_equal 'S', ::Robot::Commands.direction(angle)
+  end
 end

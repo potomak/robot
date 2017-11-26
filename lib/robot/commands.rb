@@ -47,7 +47,7 @@ module Robot
     end
 
     def direction(angle)
-      case angle / (Math::PI / 2) % 3
+      case angle / (Math::PI / 2) % 4
       when 0; return 'E'
       when 1; return 'N'
       when 2; return 'W'
