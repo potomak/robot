@@ -17,7 +17,7 @@ module Robot
     end
 
     def valid?
-      x > -1 && x < 6 && y > -1 && y < 6
+      initialized? && x > -1 && x < 6 && y > -1 && y < 6
     end
 
     def initialize_copy(other)

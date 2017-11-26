@@ -25,6 +25,16 @@ class RobotTest < Minitest::Test
     assert_equal 'E', Robot::Commands.direction(new_state.angle)
   end
 
+  def test_execute_missing_place
+    state = ::Robot::State.new
+    instructions = [
+      ::Robot::Commands.method(:move)
+    ]
+    args_list = []
+    new_state = ::Robot.execute(state, instructions, args_list)
+    assert_equal state, new_state
+  end
+
   def test_parse_valid_program
     expected_instructions = [
       ::Robot::Commands.method(:place),

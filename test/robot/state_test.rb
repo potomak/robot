@@ -22,6 +22,11 @@ class StateTest < Minitest::Test
     assert !state.valid?
   end
 
+  def test_not_initialized_is_not_valid
+    state = ::Robot::State.new
+    assert !state.valid?
+  end
+
   def test_valid
     state = ::Robot::State.new
     state.x = 0

@@ -8,7 +8,7 @@ module Robot
     }
 
     def move(state, args={})
-      return state unless state.initialized?
+      return state unless state.valid?
       new_state = state.dup
       new_state.x += Math::cos(new_state.angle).round
       new_state.y += Math::sin(new_state.angle).round
@@ -16,14 +16,14 @@ module Robot
     end
 
     def left(state, args={})
-      return state unless state.initialized?
+      return state unless state.valid?
       new_state = state.dup
       new_state.angle += Math::PI / 2
       new_state
     end
 
     def right(state, args={})
-      return state unless state.initialized?
+      return state unless state.valid?
       new_state = state.dup
       new_state.angle -= Math::PI / 2
       new_state
