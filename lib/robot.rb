@@ -16,5 +16,26 @@ module Robot
     end
   end
 
-  module_function :execute
+  def parse(string)
+    string.split("\n").map(&:strip).map do |command_string|
+      case command_string
+      when /^PLACE/
+        x, y, f = command_string.split(" ").map(&:strip)[1..-1]
+        raise 'Missing arguments' if !x || !y || !f
+        [Commands.method(:place), {x: x.to_i, y: y.to_i, f: f}]
+      when 'LEFT'
+        [Commands.method(:left), nil]
+      when 'RIGHT'
+        [Commands.method(:right), nil]
+      when 'MOVE'
+        [Commands.method(:move), nil]
+      when 'REPORT'
+        [Commands.method(:report), nil]
+      else
+        raise "Command not supported: #{command_string}"
+      end
+    end.transpose
+  end
+
+  module_function :execute, :parse
 end
