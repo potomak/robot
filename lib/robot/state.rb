@@ -12,7 +12,7 @@ module Robot
     end
 
     def initialized?
-      !x.nil? && !y.nil? && !angle.nil?
+      [x, y, angle].all?
     end
 
     def valid?
