@@ -13,7 +13,7 @@ module Robot
     end
 
     def initialized?
-      [x, y, angle].all?
+      x && y && angle
     end
 
     def valid?
